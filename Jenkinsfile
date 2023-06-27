@@ -14,6 +14,10 @@ pipeline {
                bat 'mvn package'
             }
         }
-        deploy adapters: [tomcat9(credentialsId: '69b24a2b-6819-4af7-bc7a-a10831f8c832', path: '', url: 'http://localhost:8081/')], contextPath: 'mvnwebapp', war: '**/*.war'
+        stage('Deploy'){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: '69b24a2b-6819-4af7-bc7a-a10831f8c832', path: '', url: 'http://localhost:8081/')], contextPath: 'mvnwebapp', war: '**/*.war'
+            }    
+        }    
     }
 }
